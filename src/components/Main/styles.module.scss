@@ -1,0 +1,62 @@
+@import "src/styles/mixins";
+@import "src/styles/variables";
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  @media (max-width: 1260px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 600px) {
+    @include flex(center, center, column);
+  }
+}
+
+.reposPagination {
+  @include flex(flex-end, flex-end, row);
+
+  .pagination {
+    list-style: none;
+    @include flex(flex-end, center, row);
+    font-size: 40px;
+    color: $color-orange;
+    margin-top: 26px;
+  }
+
+  .pageNum {
+    padding: 0 8px;
+    cursor: pointer;
+  }
+
+  .nextPage {
+    font-weight: 600;
+    font-size: 40px;
+    color: $color-orange;
+    margin-top: 26px;
+    padding: 0 10px 0 0px;
+  }
+
+  .lastPage {
+    font-weight: 600;
+    font-size: 40px;
+    color: $color-orange-light;
+    margin-top: 26px;
+    padding: 0 19px;
+  }
+
+  .active {
+    color: $color-black;
+    background-color: $color-orange;
+    padding: 0px 7px;
+    gap: 10px;
+    border-radius: 5px;
+  }
+}
+
+

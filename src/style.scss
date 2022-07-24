@@ -1,0 +1,9 @@
+@import "src/styles/variables";
+
+body {
+  font-family: 'Teko', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  background-color: $color-black;
+  color: $color-orange;
+}

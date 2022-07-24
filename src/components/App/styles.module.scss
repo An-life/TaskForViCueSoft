@@ -1,0 +1,26 @@
+@import "src/styles/mixins";
+@import "src/styles/variables";
+
+.wrapper {
+  @include flex(center, center, column);
+  max-width: 1250px;
+  margin: 0 auto;
+
+  h1{
+    margin: 0;
+  }
+
+  .logo {
+    height: 70px;
+    padding: 4px;
+
+    @media (hover: hover) {
+      &:hover {
+        cursor: pointer;
+        border-radius: 50px;
+        border: 2px solid $color-orange-light;
+        padding: 2px;
+      }
+    }
+  }
+}
