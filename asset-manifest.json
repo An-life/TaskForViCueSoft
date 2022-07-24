@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/TaskForViCueSoft/static/css/main.01c2dc82.css",
+    "main.js": "/TaskForViCueSoft/static/js/main.ef43aeb6.js",
+    "static/js/787.28cb0dcd.chunk.js": "/TaskForViCueSoft/static/js/787.28cb0dcd.chunk.js",
+    "index.html": "/TaskForViCueSoft/index.html",
+    "main.01c2dc82.css.map": "/TaskForViCueSoft/static/css/main.01c2dc82.css.map",
+    "main.ef43aeb6.js.map": "/TaskForViCueSoft/static/js/main.ef43aeb6.js.map",
+    "787.28cb0dcd.chunk.js.map": "/TaskForViCueSoft/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.01c2dc82.css",
+    "static/js/main.ef43aeb6.js"
+  ]
+}
