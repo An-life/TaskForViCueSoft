@@ -1,44 +1,99 @@
-import React from 'react';
+import React, {ChangeEvent, useState} from 'react';
 
 import {Route, Routes, useNavigate} from 'react-router-dom';
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 import {Main} from "../Main/Main";
 import {Product} from "../Product/Product";
-import  logo from "./../../assets/logo.png";
+import searchIcon from "./../../assets/icons/search.svg";
+import logo from "../../assets/icons/logo.png";
 
 import styles from "./styles.module.scss";
-
-
-const routes = [
-    {
-        path: `/`,
-        element: <Main/>,
-    },
-    {
-        path: `/:id`,
-        element: <Product/>,
-    },
-];
-
-
+import {useGetBeersQuery} from "../../api/beerApi";
 
 
 function App() {
-    let navigate = useNavigate();
 
-    const handlerLogoClick=()=>{
-        navigate(`/`);
+    const routes = [
+        {
+            path: `/TaskForViCueSoft`,
+            element: <Main/>,
+        },
+        {
+            path: `/TaskForViCueSoft/:id`,
+            element: <Product/>,
+        },
+    ];
+
+    let navigate = useNavigate();
+    let {data} = useGetBeersQuery();
+
+    let [inputValue, setInputValue] = useState('');
+
+    const handlerLogoClick = () => {
+        navigate(`/TaskForViCueSoft`);
+    }
+
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setInputValue(e.currentTarget.value)
+    }
+
+    const handleSubmit = () => {
+        if (data) {
+            const product = data.filter(product => product.name.toUpperCase() === inputValue.toUpperCase());
+            product.length && navigate(`/TaskForViCueSoft/${product[0].id}`);
+            toast.success('Good choiсe!', {
+                position: "top-right",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            setInputValue('')
+            if (product.length === 0) {
+                toast.warn('Enter correct name!', {
+                    position: "top-right",
+                    autoClose: 4000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
+            }
+        }
     }
 
     return (
         <div className={styles.wrapper}>
-            <div>
+            <ToastContainer
+                position="top-right"
+                autoClose={4000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+            <div className={styles.inputWrapper}>
                 <h1 onClick={handlerLogoClick}>
                     <img src={logo} alt="logo" className={styles.logo}/>
                 </h1>
-                <div>
-                    <input/>
-                    <button type="submit"></button>
+                <div className={styles.inputContainer}>
+                    <input value={inputValue} className={styles.input} placeholder="Enter beer name..."
+                           onChange={handleInputChange}/>
+                    <button type="submit" className={styles.button}>
+                        <img src={searchIcon} alt="search button"
+                             className={styles.searchIcon}
+                             onClick={handleSubmit}/>
+                    </button>
                 </div>
 
             </div>

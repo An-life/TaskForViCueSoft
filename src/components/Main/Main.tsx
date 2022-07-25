@@ -11,6 +11,7 @@ import {LoaderContainer} from "../Loader/LoaderContainer";
 import styles from "./styles.module.scss";
 
 export const Main = () => {
+
     let {data, isFetching} = useGetBeersQuery();
     let navigate = useNavigate();
 
@@ -34,7 +35,7 @@ export const Main = () => {
     };
 
     const handleCardClick = (id: number) => {
-        navigate(`/${id}`);
+        navigate(`/TaskForViCueSoft/${id}`);
     }
 
     return (<LoaderContainer isLoading={isFetching}>

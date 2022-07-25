@@ -6,10 +6,10 @@ type Props = {
     name: string;
     image: string;
     description: string;
-    onClick:()=>void;
+    onClick: () => void;
 }
 
-export const ProductCard = ({ name, image, description, onClick}: Props) => {
+export const ProductCard = ({name, image, description, onClick}: Props) => {
     let text = '';
     if (description.length < 140) {
         text = description
@@ -20,7 +20,7 @@ export const ProductCard = ({ name, image, description, onClick}: Props) => {
     return (
         <div className={styles.container} onClick={onClick}>
             <div className={styles.imageContainer}>
-            <img src={image} alt="image" className={styles.image}/>
+                <img src={image} alt="image" className={styles.image}/>
             </div>
             <h2>{name}</h2>
             <div>{text}</div>
