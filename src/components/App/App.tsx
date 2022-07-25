@@ -8,10 +8,9 @@ import {Main} from "../Main/Main";
 import {Product} from "../Product/Product";
 import searchIcon from "./../../assets/icons/search.svg";
 import logo from "../../assets/icons/logo.png";
-
-import styles from "./styles.module.scss";
 import {useGetBeersQuery} from "../../api/beerApi";
 
+import styles from "./styles.module.scss";
 
 function App() {
 
@@ -43,7 +42,7 @@ function App() {
         if (data) {
             const product = data.filter(product => product.name.toUpperCase() === inputValue.toUpperCase());
             product.length && navigate(`/TaskForViCueSoft/${product[0].id}`);
-            toast.success('Good choiсe!', {
+            product.length !== 0 && toast.success('Good choiсe!', {
                 position: "top-right",
                 autoClose: 4000,
                 hideProgressBar: false,
@@ -54,18 +53,16 @@ function App() {
                 theme: "colored",
             });
             setInputValue('')
-            if (product.length === 0) {
-                toast.warn('Enter correct name!', {
-                    position: "top-right",
-                    autoClose: 4000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "colored",
-                });
-            }
+            product.length === 0 && toast.warn('Enter correct name!', {
+                position: "top-right",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
         }
     }
 
